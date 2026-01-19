@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-background: 0 0% 100%;
+    --color-foreground: 231 17% 20%;
+    --color-primary: 217 91% 60%;
+    --color-primary-foreground: 0 0% 100%;
+    --color-secondary: 217 70% 75%;
+    --color-secondary-foreground: 217 10% 10%;
+    --color-tertiary: 13 85% 62%;
+    --color-tertiary-foreground: 0 0% 100%;
+    --color-neutral: 0 0% 96%;
+    --color-neutral-foreground: 231 17% 20%;
+    --color-success: 145 55% 45%;
+    --color-success-foreground: 0 0% 100%;
+    --color-warning: 42 90% 55%;
+    --color-warning-foreground: 0 0% 100%;
+    --color-border: 0 0% 88%;
+    --color-input: 0 0% 88%;
+    --color-ring: 217 91% 60%;
+    --color-muted: 0 0% 96%;
+    --color-muted-foreground: 0 0% 38%;
+    --color-accent: 0 0% 96%;
+    --color-accent-foreground: 231 17% 20%;
+    --color-card: 0 0% 100%;
+    --color-card-foreground: 231 17% 20%;
+    --color-popover: 0 0% 100%;
+    --color-popover-foreground: 231 17% 20%;
+    --radius: 12px;
+    --font-sans: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body {
+    @apply bg-background text-foreground font-body;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans text-foreground;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .required-asterisk::after {
+    content: ' *';
+    color: hsl(0, 84%, 60%);
+  }
+}
