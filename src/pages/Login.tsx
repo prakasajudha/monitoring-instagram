@@ -154,7 +154,7 @@ export function Login() {
                         <p className="text-muted-foreground">Password: <span className="font-mono">admin123</span></p>
                       </div>
                       <div>
-                        <p className="font-medium text-foreground mb-1">User:</p>
+                        <p className="font-medium text-foreground mb-1">Users:</p>
                         <p className="text-muted-foreground">Email: <span className="font-mono">john_doe@pertamina.com</span></p>
                         <p className="text-muted-foreground">Password: <span className="font-mono">user123</span></p>
                       </div>
