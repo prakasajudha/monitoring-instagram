@@ -17,6 +17,7 @@ interface AuthContextType {
   register: (data: RegisterData) => Promise<void>;
   isAuthenticated: boolean;
   isAdmin: boolean;
+  isLoading: boolean;
 }
 
 interface RegisterData {
@@ -32,12 +33,19 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
-      setUser(JSON.parse(storedUser));
+      try {
+        setUser(JSON.parse(storedUser));
+      } catch (error) {
+        console.error('Failed to parse user from localStorage', error);
+        localStorage.removeItem('user');
+      }
     }
+    setIsLoading(false);
   }, []);
 
   const login = async (username: string, password: string) => {
@@ -104,6 +112,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         register,
         isAuthenticated: !!user,
         isAdmin: user?.role === 'admin',
+        isLoading,
       }}
     >
       {children}
